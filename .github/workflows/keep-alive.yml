@@ -1,0 +1,16 @@
+name: 维持Supabase活跃度
+on:
+  schedule:
+    - cron: '0 8 * * *'  # 每天UTC时间8点执行（可改时区，比如改成北京时间16点则写 '0 8 * * *' 对应UTC+8）
+  workflow_dispatch:  # 允许手动触发测试
+
+jobs:
+  ping-supabase:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 发送请求到Supabase接口
+        run: |
+          # 替换为你的Supabase项目接口（比如简单的查询接口、存储列表接口）
+          curl -X GET "https://TONYYYYA.supabase.co/rest/v1/users?select=*&limit=1" \
+          -H "apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp0ZmRqaWp4b3FxbWZtZG52cm5oIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA1OTM5NDUsImV4cCI6MjA3NjE2OTk0NX0.LUhMpn3l9PuNTLqX-T-oYEpnlHHNP19ANU5S5x_qF5s" \
+          -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp0ZmRqaWp4b3FxbWZtZG52cm5oIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA1OTM5NDUsImV4cCI6MjA3NjE2OTk0NX0.LUhMpn3l9PuNTLqX-T-oYEpnlHHNP19ANU5S5x_qF5s"
